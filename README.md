@@ -106,10 +106,9 @@ guess-number-game/
 └── tailwind.config.js
 ```
 
----
+
 
 ## 📝 License
 
 MIT © 2025 [Kuanlin](https://github.com/and910805)
 
-```
