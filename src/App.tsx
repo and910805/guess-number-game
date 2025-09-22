@@ -27,7 +27,14 @@ export default function App() {
   if (mode === 'visualizer') {
     return (
       <div className="container-nice py-10">
-        <button onClick={() => setMode('game')} className="btn mb-6">⬅ 回主頁</button>
+        {/* 回主頁按鈕 */}
+        <button
+          onClick={() => setMode('game')}
+          className="px-4 py-2 mb-6 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow"
+        >
+          ⬅ 回主頁
+        </button>
+
         <AlgorithmVisualizer />
         <SignatureWatermark />
       </div>
@@ -43,7 +50,7 @@ export default function App() {
             猜數字小遊戲 <span className="badge ml-2">亂猜 vs. 二分法</span>
           </h1>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <label className="text-sm text-slate-600">範圍</label>
             <select
               value={maxSel}
@@ -56,11 +63,15 @@ export default function App() {
                 </option>
               ))}
             </select>
-          </div>
 
-          <button onClick={() => setMode('visualizer')} className="btn">
-            📊 演算法示意圖
-          </button>
+            {/* 進入演算法示意圖按鈕 */}
+            <button
+              onClick={() => setMode('visualizer')}
+              className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow"
+            >
+              📊 演算法示意圖
+            </button>
+          </div>
         </div>
 
         <p className="mt-3 text-base text-slate-600">
