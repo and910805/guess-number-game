@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import RandomGuessGame from './components/RandomGuessGame'
 import BinarySearchDemo from './components/BinarySearchDemo'
+import AlgorithmVisualizer from './components/AlgorithmVisualizer'
 
 const RANGE_PRESETS = [100, 1000, 10000]
 
@@ -18,9 +19,20 @@ function SignatureWatermark() {
 }
 
 export default function App() {
-  const [maxSel, setMaxSel] = useState<number>(1000) // 預設 1–1000
+  const [mode, setMode] = useState<'game' | 'visualizer'>('game')
+  const [maxSel, setMaxSel] = useState<number>(1000)
   const MIN = 1
   const MAX = maxSel
+
+  if (mode === 'visualizer') {
+    return (
+      <div className="container-nice py-10">
+        <button onClick={() => setMode('game')} className="btn mb-6">⬅ 回主頁</button>
+        <AlgorithmVisualizer />
+        <SignatureWatermark />
+      </div>
+    )
+  }
 
   return (
     <div className="container-nice py-10">
@@ -45,9 +57,15 @@ export default function App() {
               ))}
             </select>
           </div>
+
+          <button onClick={() => setMode('visualizer')} className="btn">
+            📊 演算法示意圖
+          </button>
         </div>
+
         <p className="mt-3 text-base text-slate-600">
-          透過兩種方法的即時對比，讓學生直覺理解「為什麼二分搜尋更快」。可切換範圍觀察步數差異（理論上限 ≈ ⌈log₂(N)⌉）。
+          透過兩種方法的即時對比，讓學生直覺理解「為什麼二分搜尋更快」。
+          可切換範圍觀察步數差異（理論上限 ≈ ⌈log₂(N)⌉）。
         </p>
       </header>
 
